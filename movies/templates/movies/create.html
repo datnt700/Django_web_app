@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+        <h3>Add new Movies Record</h3>
+        </hr>
+        <form method="POST">
+            {% csrf_token %}
+            {% block content %}
+            <table border="1">
+                <tr>
+                    <td>Title </td>
+                    <td><input type="text" placeholder="Title..." name="title"></td>
+                </tr>
+                <tr>
+                    <td>Release year</td>
+                    <td><input type="text" placeholder="Release year..." name="year"></td>
+                </tr>
+                <tr>
+                    <td>Number in stock</td>
+                    <td><input type="text" placeholder="Number in stock..." name="number"></td>
+                </tr>
+                <tr>
+                    <td>Daily rate</td>
+                    <td><input type="text" placeholder="Rate..." name="rate"></td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td><input type="text" placeholder="Genre..." name="genre"></td>
+                </tr>
+
+            </table>
+            <input type="submit" value="Insert Record" /> |
+            <a href="{% url 'movies:index'%}">Home Page</a>
+            <hr />
+            {% if messages %}
+            {% for result in messages %}
+            <b style="color: green;">{{result}}</b>
+            {% endfor %}
+            {% endif %}
+        </form>
+        {% endblock %}
